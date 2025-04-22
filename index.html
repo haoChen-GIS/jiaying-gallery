@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>丁佳莹 | 极致典雅个人主页</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Roboto:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* 全局重置 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* 字体与背景 */
+      body {
+        background: #f0f6ff;
+        font-family: "Roboto", sans-serif;
+        color: #0d1b2a;
+      }
+
+      /* 导航栏 */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        padding: 12px;
+      }
+      nav li {
+        margin: 0 24px;
+      }
+      nav a {
+        text-decoration: none;
+        font-family: "Playfair Display", serif;
+        color: #1e88e5;
+        font-size: 1.1em;
+        transition: color 0.3s;
+      }
+      nav a:hover {
+        color: #1565c0;
+      }
+
+      /* 英雄区 */
+      header {
+        height: 80vh;
+        background: url("images/mountain.png") center/cover no-repeat;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      header::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .hero-content {
+        position: relative;
+        text-align: center;
+        color: #fff;
+        z-index: 1;
+        animation: fadeIn 1.5s ease-out;
+      }
+      .hero-avatar {
+        width: 200px;
+        height: 200px;
+        border: 4px solid #1e88e5;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 16px;
+      }
+      .hero-content h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 8px;
+      }
+      .tagline {
+        font-style: italic;
+        font-size: 1.2rem;
+      }
+
+      /* 通用板块样式 */
+      section {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      section h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        color: #1e88e5;
+        margin-bottom: 24px;
+      }
+
+      /* Masonry 相册 */
+      .masonry {
+        display: grid;
+        grid-gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        margin-bottom: 60px;
+      }
+      .masonry img {
+        width: 100%;
+        border-radius: 16px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s;
+      }
+      .masonry img:hover {
+        transform: scale(1.05);
+      }
+
+      /* 关于我 */
+      #about {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 32px;
+      }
+      #about img {
+        width: 180px;
+        height: 180px;
+        border: 3px solid #1565c0;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      #about .text {
+        flex: 1;
+        color: #415a77;
+        line-height: 1.7;
+      }
+
+      /* 页脚 */
+      footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 0.9em;
+        color: #415a77;
+        background: #fff;
+      }
+      footer a {
+        color: #1e88e5;
+        text-decoration: none;
+        margin: 0 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 导航 -->
+    <nav>
+      <ul>
+        <li><a href="#home">ホーム</a></li>
+        <li><a href="#gallery">写真</a></li>
+        <li><a href="#about">私について</a></li>
+        <li><a href="#contact">連絡する</a></li>
+      </ul>
+    </nav>
+
+    <!-- 英雄区 -->
+    <header id="home">
+      <div class="hero-content">
+        <!-- 替换 avatar-header.jpg 为你的头像 URL -->
+        <img
+          src="images/avatar-header.png"
+          alt="丁佳莹 头像"
+          class="hero-avatar"
+        />
+        <h1>Jiaying Ding</h1>
+        <div class="tagline">光と影の瞬間の美しさを捉え、永遠の感動を刻む</div>
+      </div>
+    </header>
+
+    <!-- 精选相册 -->
+    <section id="gallery">
+      <h2>注目のアルバム</h2>
+      <div class="masonry">
+        <img src="images/photo1.png" alt="photo1" />
+
+        <!-- 主界面画廊里的图 -->
+        <script>
+          function generateGalleryImages() {
+            const images = [];
+            for (let i = 2; i <= 20; i++) {
+              images.push(`<img src="images/photo${i}.png" alt="photo${i}" />`);
+            }
+            return images.join("\n");
+          }
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const gallery = document.querySelector(".masonry");
+            gallery.innerHTML += generateGalleryImages();
+          });
+        </script>
+        <!-- <img src="images/photo2.png" alt="photo1" />
+        <img src="images/photo3.png" alt="photo1" />
+        <img src="images/photo4.png" alt="photo1" />
+        <img src="images/photo5.png" alt="photo1" />
+        <img src="images/photo6.png" alt="photo1" />
+        <img src="images/photo7.png" alt="photo1" />
+        <img src="images/photo8.png" alt="photo1" />
+        <img src="images/photo9.png" alt="photo1" />
+        <img src="images/photo10.png" alt="photo1" />
+        <img src="images/photo11.png" alt="photo1" />
+        <img src="images/photo12.png" alt="photo1" />
+        <img src="images/photo13.png" alt="photo1" />
+        <img src="images/photo14.png" alt="photo1" />
+        <img src="images/photo15.png" alt="photo1" />
+        <img src="images/photo16.png" alt="photo1" />
+        <img src="images/photo17.png" alt="photo1" />
+        <img src="images/photo18.png" alt="photo1" />
+        <img src="images/photo19.png" alt="photo1" />
+        <img src="images/photo20.png" alt="photo1" /> -->
+      </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about">
+      <h2>私について</h2>
+
+      <img src="images/about.png" alt="关于我" />
+      <div class="text">
+        <p>
+          私のビジュアルの世界へようこそ。シャッターを押すたびに魂が触れられます。すべてのフレームに、光と影に対する私の愛と探求が込められています。
+        </p>
+        <p style="margin-top: 16px">
+          レンズが心に響いた時、私の気持ちや考えを皆さんと共有したいと思います。
+        </p>
+      </div>
+    </section>
+
+    <!-- 联系我 -->
+    <section id="contact">
+      <h2>連絡する</h2>
+      <!-- <p>✉️ <a href="mailto:youremail@example.com">youremail@example.com</a></p> -->
+      <p>🌎 WeChat: Bless-all-3</p>
+      <!-- <p>
+        🔗
+        <a href="https://instagram.com/yourprofile" target="_blank"
+          >Instagram</a
+        >
+        |
+        <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
+      </p> -->
+    </section>
+
+    <!-- 页脚 -->
+    <footer>© 2025 Jiaying Ding <a href="#home">Home</a></footer>
+
+    <script>
+      // 随机打乱相册顺序
+      document.addEventListener("DOMContentLoaded", () => {
+        const gallery = document.querySelector(".masonry");
+        Array.from(gallery.children)
+          .sort(() => Math.random() - 0.5)
+          .forEach((el) => gallery.appendChild(el));
+      });
+    </script>
+  </body>
+</html>
