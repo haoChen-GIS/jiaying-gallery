@@ -8,21 +8,30 @@
       rel="stylesheet"
     />
     <style>
-      /* 全局重置 */
+      /* —— 全局配色变量 —— */
+      :root {
+        --bg-light-green: #ebfbee; /* 清新淡绿背景 */
+        --accent-green: #81c784; /* 相册边框绿 */
+        --accent-green-dark: #388e3c; /* 相册悬停深绿 */
+        --text-primary: #868e96; /* 主文字深灰 */
+        --heading-green: #2e7d32; /* 板块标题深绿 */
+      }
+
+      /* —— 全局重置 —— */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
-      /* 字体与背景 */
+      /* —— 字体与背景 —— */
       body {
-        background: #f0f6ff;
+        background: var(--bg-light-green);
         font-family: "Roboto", sans-serif;
-        color: #0d1b2a;
+        color: var(--text-primary);
       }
 
-      /* 导航栏 */
+      /* —— 导航栏 —— */
       nav {
         position: fixed;
         top: 0;
@@ -44,15 +53,15 @@
       nav a {
         text-decoration: none;
         font-family: "Playfair Display", serif;
-        color: #1e88e5;
+        color: var(--text-primary);
         font-size: 1.1em;
         transition: color 0.3s;
       }
       nav a:hover {
-        color: #1565c0;
+        color: var(--heading-green);
       }
 
-      /* 英雄区 */
+      /* —— 英雄区 —— */
       header {
         height: 80vh;
         background: url("images/mountain.png") center/cover no-repeat;
@@ -85,7 +94,7 @@
       .hero-avatar {
         width: 200px;
         height: 200px;
-        border: 4px solid #1e88e5;
+        border: 4px solid #3874cb;
         border-radius: 50%;
         object-fit: cover;
         margin: 0 auto 16px;
@@ -101,7 +110,7 @@
         font-size: 1.2rem;
       }
 
-      /* 通用板块样式 */
+      /* —— 通用板块 —— */
       section {
         padding: 80px 20px;
         max-width: 1200px;
@@ -110,11 +119,11 @@
       section h2 {
         font-family: "Playfair Display", serif;
         font-size: 2.5rem;
-        color: #1e88e5;
+        color: var(--text-primary);
         margin-bottom: 24px;
       }
 
-      /* Masonry 相册 */
+      /* —— Masonry 相册 —— */
       .masonry {
         display: grid;
         grid-gap: 16px;
@@ -125,44 +134,52 @@
         width: 100%;
         border-radius: 16px;
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-        transition: transform 0.3s;
+        transition: transform 0.3s, border-color 0.3s;
       }
       .masonry img:hover {
         transform: scale(1.05);
+        border-color: var(--accent-green-dark);
       }
 
-      /* 关于我 */
+      /* —— 关于我 —— */
       #about {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         gap: 32px;
+        background: transparent;
       }
       #about img {
         width: 180px;
         height: 180px;
-        border: 3px solid #1565c0;
+        border: 3px solid var(--text-primary);
         border-radius: 50%;
         object-fit: cover;
       }
       #about .text {
         flex: 1;
-        color: #415a77;
+        color: var(--text-primary);
         line-height: 1.7;
       }
 
-      /* 页脚 */
+      /* —— 联系我 —— */
+      /* 可按需添加 */
+
+      /* —— 页脚 —— */
       footer {
         text-align: center;
         padding: 20px;
         font-size: 0.9em;
-        color: #415a77;
+        color: var(--text-primary);
         background: #fff;
       }
       footer a {
-        color: #1e88e5;
+        color: var(--text-primary);
         text-decoration: none;
         margin: 0 8px;
+      }
+      footer a:hover {
+        color: var(--heading-green);
       }
     </style>
   </head>
